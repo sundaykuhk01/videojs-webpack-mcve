@@ -3,7 +3,10 @@ const path = require('path');
 
 // VJS hls set up: https://github.com/videojs/videojs-contrib-hls/issues/600#issuecomment-340668494
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'bundle': './src/index.js',
+    'bundle-lib': './src/lib.js',
+  },
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
@@ -31,7 +34,7 @@ module.exports = {
     }
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
   }
 };

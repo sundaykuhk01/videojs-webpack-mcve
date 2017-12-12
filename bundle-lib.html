@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>With webpack</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      /* Temp fix quality selector style */
+      .vjs-icon-hd:before {
+        content: "\F114";
+        font-size: 1.8em;
+        line-height: 1.67;
+      }
+    </style>
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+  </head>
+  <body>
+    <a href="https://players.brightcove.net/5005079444001/rkQMw34sW_default/index.html?videoId=5670602123001">BrightCove Player</a>
+    <video class="video-js" playsinline controls>
+      <source src="https://vdo.cdn.hk01.com/L0-20171109124822-a8377b45-c53b-11e7-8763-d105568b8b20/d1eae53258e84c32f31632821ad13615.m3u8" type="application/x-mpegURL">
+    </video>
+  </body>
+  <script src="dist/bundle-lib.js"></script>
+  <script type="text/javascript">
+const player = window.vjs(
+  document.querySelector('.video-js'),
+  {
+    html5: {
+      // For native HLS override
+      nativeAudioTracks: false,
+      nativeVideoTracks: false,
+      hls: {
+        // Show low quality video first
+        enableLowInitialPlaylist: true,
+        // END
+        // For quality selector in android with HLS native support
+        overrideNative: true,
+        // END
+      },
+      // END
+    },
+  }
+);
+player.qualityLevels();
+player.hlsQualitySelector();
+  </script>
+</html>
