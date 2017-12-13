@@ -14,24 +14,26 @@ import './videojs-hls-quality-selector.min.js';
 // For debugging
 window.vjs = videojs;
 
-const player = videojs(
-  document.querySelector('.video-js'),
-  {
-    html5: {
-      // For native HLS override
-      nativeAudioTracks: false,
-      nativeVideoTracks: false,
-      hls: {
-        // Show low quality video first
-        enableLowInitialPlaylist: true,
-        // END
-        // For quality selector in android with HLS native support
-        overrideNative: true,
+document.addEventListener("DOMContentLoaded", () => {
+  const player = videojs(
+    document.querySelector('.video-js'),
+    {
+      html5: {
+        // For native HLS override
+        nativeAudioTracks: false,
+        nativeVideoTracks: false,
+        hls: {
+          // Show low quality video first
+          enableLowInitialPlaylist: true,
+          // END
+          // For quality selector in android with HLS native support
+          overrideNative: true,
+          // END
+        },
         // END
       },
-      // END
-    },
-  }
-);
-player.qualityLevels();
-player.hlsQualitySelector();
+    }
+  );
+  player.qualityLevels();
+  player.hlsQualitySelector();
+});
