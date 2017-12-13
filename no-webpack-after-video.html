@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Without webpack (Success)</title>
+    <title>Without webpack (Fail)</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
@@ -12,18 +12,18 @@
         line-height: 1.67;
       }
     </style>
-    <script src="node_modules/video.js/dist/video.min.js"></script>
-    <script src="node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js"></script>
-    <script src="node_modules/videojs-contrib-quality-levels/dist/videojs-contrib-quality-levels.min.js"></script>
-    <script src="node_modules/videojs-hls-quality-selector/dist/videojs-hls-quality-selector.min.js"></script>
     <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Without Webpack, load VideoJS before video tag</h1>
+    <h1>Without Webpack, load VideoJS after video tag</h1>
     <video class="video-js" playsinline controls>
       <source src="https://vdo.cdn.hk01.com/L0-20171109124822-a8377b45-c53b-11e7-8763-d105568b8b20/d1eae53258e84c32f31632821ad13615.m3u8" type="application/x-mpegURL">
     </video>
   </body>
+  <script src="node_modules/video.js/dist/video.min.js"></script>
+  <script src="node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js"></script>
+  <script src="node_modules/videojs-contrib-quality-levels/dist/videojs-contrib-quality-levels.min.js"></script>
+  <script src="node_modules/videojs-hls-quality-selector/dist/videojs-hls-quality-selector.min.js"></script>
   <script>
     const player = videojs(
       document.querySelector('.video-js'),
